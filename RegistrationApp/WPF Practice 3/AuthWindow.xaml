@@ -1,0 +1,28 @@
+﻿<Window x:Class="WPF_Practice_3.AuthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:WPF_Practice_3"
+        mc:Ignorable="d"
+        Title="User Login" Height="400" Width="500">
+    <Grid Name="MainRoot" Background ="Gray">
+        <Border MinWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="40" MaxWidth ="400" CornerRadius="30">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="WhiteSmoke" ShadowDepth="0"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Login Page" FontSize="30" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="20"/>
+                <Grid>
+                    <Button HorizontalAlignment="Left" Content="Login"/>
+                    <Button HorizontalAlignment="Right" Content="Registration" Click="Registration_Click" Style="{StaticResource MaterialDesignFlatButton}"/>
+                </Grid>
+                <TextBox Name="MailNameBox" materialDesign:HintAssist.Hint="Enter Mail :" Margin="0 10"/>
+                <TextBox Name="LoginNameBox" materialDesign:HintAssist.Hint="Enter Login :" Margin="0 0 0 10"/>
+                <PasswordBox Name="PasswordBox" materialDesign:HintAssist.Hint="Enter Password :" Margin="0 0 0 10"/>
+                <Button Name="LoginButton" Content="Login" Click="LoginButton_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
