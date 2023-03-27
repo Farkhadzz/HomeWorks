@@ -14,12 +14,17 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using StoreApp.Messages;
 using StoreApp.Model;
+using StoreApp.Services.Interfaces;
 
 namespace StoreApp.ViewModel;
     class MainViewModel : ViewModelBase
     {
-        private ViewModelBase _currentViewModel;
-        public ViewModelBase CurrentViewModel 
+        private readonly INavigationService _navigationService;
+        private readonly IMessenger _messenger;
+
+
+    private ViewModelBase _currentViewModel;
+    public ViewModelBase CurrentViewModel 
         { 
           get => _currentViewModel;
             set
@@ -27,18 +32,30 @@ namespace StoreApp.ViewModel;
                Set(ref _currentViewModel, value);
             }
         }
-        private readonly IMessenger _messenger;
+        
 
     public void ReceiveMessage(NavigationMessage message)
     {
         CurrentViewModel = App.Container.GetInstance(message.ViewModelType) as ViewModelBase;
     }
-    public MainViewModel(IMessenger messenger)
-        {
+    public MainViewModel(IMessenger messenger, INavigationService navigationService)
+    {
             CurrentViewModel = App.Container.GetInstance<LoginViewModel>();
 
             _messenger = messenger;
+            _navigationService = navigationService;
 
         _messenger.Register<NavigationMessage>(this, ReceiveMessage);
-        }
     }
+
+    public RelayCommand StoreCommand
+    {
+        get => new(() =>
+        {
+            _navigationService.NavigateTo<StoreViewModel>();
+        });
+    }
+
+}
+
+

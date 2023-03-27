@@ -40,3 +40,11 @@ C:\Users\user\source\repos\StoreApp\StoreApp\obj\Debug\net6.0-windows\View\Store
 C:\Users\user\source\repos\StoreApp\StoreApp\obj\Debug\net6.0-windows\View\StoreView.baml
 C:\Users\user\source\repos\StoreApp\StoreApp\obj\Debug\net6.0-windows\View\CustomersView.g.cs
 C:\Users\user\source\repos\StoreApp\StoreApp\obj\Debug\net6.0-windows\View\CustomersView.baml
+C:\Users\user\source\repos\StoreApp\StoreApp\bin\Debug\net6.0-windows\Images\customer_page.png
+C:\Users\user\source\repos\StoreApp\StoreApp\obj\Debug\net6.0-windows\StoreApp_Content.g.cs
+C:\Users\user\source\repos\StoreApp\StoreApp\bin\Debug\net6.0-windows\Images\img_customer.png
+C:\Users\user\source\repos\StoreApp\StoreApp\bin\Debug\net6.0-windows\Images\home_page.png
+C:\Users\user\source\repos\StoreApp\StoreApp\bin\Debug\net6.0-windows\Images\img_home.png
+C:\Users\user\source\repos\StoreApp\StoreApp\bin\Debug\net6.0-windows\Images\img_product.png
+C:\Users\user\source\repos\StoreApp\StoreApp\bin\Debug\net6.0-windows\Images\img_shipment.png
+C:\Users\user\source\repos\StoreApp\StoreApp\bin\Debug\net6.0-windows\Images\img_transaction.png

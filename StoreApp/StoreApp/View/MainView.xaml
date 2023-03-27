@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StoreApp.View"
         xmlns:mD="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:ViewModel="clr-namespace:StoreApp.ViewModel"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -48,6 +49,14 @@
             </Button>
             
         </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Command="{Binding StoreCommand}"
+                    Background="Transparent">
+                <Image Source="/Images/img_home.png"/>
+            </Button>
+        </StackPanel>
+        
 
         <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}"/>
         

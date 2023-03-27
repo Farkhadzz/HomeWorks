@@ -12,6 +12,8 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Text.Json;
 
 namespace StoreAdmin.ViewModel
 {
@@ -28,6 +30,14 @@ namespace StoreAdmin.ViewModel
         }
 
         private ObservableCollection<ProductModel> _products = new();
+        public ObservableCollection<ProductModel> Products
+        {
+            get { return _products; }
+            set
+            {
+                _products = value;
+            }
+        }
 
         public ViewModelBase CurrentViewModel
         {
@@ -41,6 +51,38 @@ namespace StoreAdmin.ViewModel
         public void ReceiveNavigationMessage(NavigationMessage message)
         {
             CurrentViewModel = App.Container.GetInstance(message.ViewModelType) as ViewModelBase;
+        }
+
+        public void MainOpen()
+        {
+            using FileStream fs = new(System.IO.Directory.GetParent(System.IO.Directory.GetParent(System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString()).ToString()).ToString() + "\\products.json", FileMode.OpenOrCreate, FileAccess.Read);
+            using StreamReader sr = new(fs);
+
+            fs.Position = 0;
+            if (sr.ReadToEnd() != string.Empty)
+            {
+                fs.Position = 0;
+                Products = JsonSerializer.Deserialize<ObservableCollection<ProductModel>>(sr.ReadToEnd());
+            }
+        }
+
+        public void MainClose()
+        {
+
+            using FileStream fs = new(System.IO.Directory.GetParent(System.IO.Directory.GetParent(System.IO.Directory.GetParent(System.IO.Directory.GetParent(Environment.CurrentDirectory).ToString()).ToString()).ToString()).ToString() + "\\products.json", FileMode.Truncate, FileAccess.Write);
+            using StreamWriter sw = new(fs);
+
+            var json = JsonSerializer.Serialize(Products);
+
+            sw.Write(json);
+        }
+
+        public RelayCommand AddCommand
+        {
+            get => new(() =>
+            {
+                _navigationService.NavigateTo<AddViewModel>();
+            });
         }
 
     }

@@ -34,7 +34,7 @@
                     Width="20"
                     Background="Transparent"
                     Margin="10">
-                <Image Source="StoreAdmin/Images/shutdown_mo.png"
+                <Image Source="/Images/shutdown_mo.png"
                        Stretch="Fill"/>
             </Button>
             

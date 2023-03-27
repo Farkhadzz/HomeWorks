@@ -21,13 +21,13 @@ namespace StoreApp
     {
         public static Container Container { get; set; } = new();
 
-        //protected override void OnStartup(StartupEventArgs e)
-        //{
-        //    Register();
-        //    MainStartup();
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            Register();
+            MainStartup();
 
-        //    base.OnStartup(e);
-        //}
+            base.OnStartup(e);
+        }
 
         private void Register()
         {

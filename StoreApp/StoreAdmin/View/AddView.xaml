@@ -36,6 +36,8 @@
         <TextBox Text="{Binding Product.Price}" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" Width="250" Height="30"/>
 
         <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Image : " FontSize="20" FontWeight="DemiBold"/>
-        <Button Command="{Binding ImagePickCommand}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Style="{StaticResource RoundedButton}" Width="90" Height="40" Content="Browse" FontSize="16" FontWeight="DemiBold"/>
+        <Button Command="{Binding ImagePickCommand}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="90" Height="40" Content="Browse" FontSize="16" FontWeight="DemiBold"/>
+
+        <Button Command="{Binding AcceptCommand}" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15" Width="400" Height="80" Content="Accept" FontSize="35" FontWeight="DemiBold"/>
     </Grid>
 </UserControl>

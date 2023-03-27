@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:StoreApp"
              xmlns:ViewModel="clr-namespace:StoreApp.ViewModel"
              xmlns:View="clr-namespace:StoreApp.View"
-             StartupUri="/View/StoreView.xaml">
+             StartupUri="/View/MainView.xaml">
                
     <Application.Resources> 
         <ResourceDictionary>

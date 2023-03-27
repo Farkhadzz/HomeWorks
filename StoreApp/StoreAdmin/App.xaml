@@ -2,22 +2,22 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:StoreAdmin"
-              xmlns:ViewModel="clr-namespace:StoreAdmin.ViewModel"
+             xmlns:ViewModel="clr-namespace:StoreAdmin.ViewModel"
              xmlns:View="clr-namespace:StoreAdmin.View"
              StartupUri="View/MainWindowView.xaml">
     <Application.Resources>
 
-        <DataTemplate DataType="{x:Type ViewModel:MainViewModel}">
-            <View:MainWindowView></View:MainWindowView>
-        </DataTemplate>
-
-        <DataTemplate DataType="{x:Type ViewModel:AddViewModel}">
-            <View:AddView></View:AddView>
-        </DataTemplate>
-
-
-
         <ResourceDictionary>
+            <DataTemplate DataType="{x:Type ViewModel:MainViewModel}">
+                <View:MainWindowView></View:MainWindowView>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModel:AddViewModel}">
+                <View:AddView></View:AddView>
+            </DataTemplate>
+
+
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
