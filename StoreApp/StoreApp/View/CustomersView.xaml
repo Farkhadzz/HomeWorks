@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="StoreApp.View.CustomersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StoreApp.View"
+             xmlns:ViewModel="clr-namespace:StoreApp.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" 
+             d:DesignWidth="622">
+    
+    <Grid>
+
+        <Border CornerRadius="0,20,20,0">
+            
+            <Border.Background>
+                
+                <ImageBrush 
+                    
+                    ImageSource="/Images/customer_page.png"
+                    Stretch="None"/>
+                
+            </Border.Background>
+            
+        </Border>
+
+        <TextBlock Text="Login :"
+                   Foreground="#DBDBDB"
+                   FontSize="12"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="80,151,0,0"/>
+
+        <TextBlock Text="Mail :"
+                   Foreground="#DBDBDB"
+                   FontSize="12"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="80,210,0,0"/>
+        
+    </Grid>
+</UserControl>

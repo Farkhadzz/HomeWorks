@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="StoreAdmin.View.AddView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StoreAdmin.View"
+             xmlns:ViewModel="clr-namespace:StoreAdmin.ViewModel"
+             xmlns:mD="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DataContext="{d:DesignInstance Type=ViewModel:AddViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="420" 
+             d:DesignWidth="840">
+    
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.3*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Name : " FontSize="20" FontWeight="DemiBold"/>
+        <TextBox Text="{Binding Product.Name}" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" Width="250" Height="30" FontSize="18" FontWeight="DemiBold"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Composition : " FontSize="20" FontWeight="DemiBold"/>
+        <TextBox Text="{Binding Product.Composition}" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" Width="250" Height="30" FontSize="18" FontWeight="DemiBold"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Price : " FontSize="20" FontWeight="DemiBold"/>
+        <TextBox Text="{Binding Product.Price}" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" Width="250" Height="30"/>
+
+        <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Text="Image : " FontSize="20" FontWeight="DemiBold"/>
+        <Button Command="{Binding ImagePickCommand}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="90" Height="40" Content="Browse" FontSize="16" FontWeight="DemiBold"/>
+
+        <Button Command="{Binding AcceptCommand}" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15" Width="400" Height="80" Content="Accept" FontSize="35" FontWeight="DemiBold"/>
+    </Grid>
+</UserControl>
