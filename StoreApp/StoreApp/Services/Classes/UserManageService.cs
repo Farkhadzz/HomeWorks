@@ -12,7 +12,7 @@ namespace StoreApp.Services.Classes
 {
     public class UserManageService : IUserManageService
     {
-        private List<User> Users = new();
+        private List<User> Users { get; set; } = new();
         private readonly ISerializeService _serializeService;
 
         public UserManageService(ISerializeService service)
@@ -35,9 +35,15 @@ namespace StoreApp.Services.Classes
 
             var json = sr.ReadToEnd();
 
-            if (check.Length > 1)
+            fs.Position = 0;
+            if (check.Length > 10)
             {
+                fs.Position = 0;
                 Users = (List<User>)_serializeService.Deserialize<List<User>>(check);
+            }
+            if(Users == null)
+            {
+                Users = new();
             }
             Users.Add(user);
             json = _serializeService.Serialize<List<User>>(Users);
@@ -50,7 +56,10 @@ namespace StoreApp.Services.Classes
             using StreamReader sr = new(fs);
 
             Users = (List<User>)_serializeService.Deserialize<List<User>>(sr.ReadToEnd());
-
+            if (Users == null)
+            {
+                Users = new();
+            }
             var result = Users.Find(x => x.Login == login && x.Password == password);
 
             return result;

@@ -10,33 +10,36 @@
              d:DesignWidth="622">
     
     <Grid>
+        
 
         <Border CornerRadius="0,20,20,0">
             
             <Border.Background>
-                
+
                 <ImageBrush 
                     
                     ImageSource="/Images/customer_page.png"
                     Stretch="None"/>
-                
+
             </Border.Background>
             
         </Border>
 
-        <TextBlock Text="Login :"
-                   Foreground="#DBDBDB"
-                   FontSize="12"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top"
-                   Margin="80,151,0,0"/>
+        
 
-        <TextBlock Text="Mail :"
+        <TextBlock Text="{Binding User.Login}"
                    Foreground="#DBDBDB"
                    FontSize="12"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"
-                   Margin="80,210,0,0"/>
+                   Margin="730,343,0,0"/>
+        
+        <TextBlock Text="{Binding User.Mail}"
+                   Foreground="#DBDBDB"
+                   FontSize="12"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="730,401,0,0"/>
         
     </Grid>
 </UserControl>

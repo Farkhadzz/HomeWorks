@@ -37,6 +37,7 @@ namespace StoreApp.ViewModel;
                     var user = _userManageService.GetUser(Login, password.Password);
 
                     MessageBox.Show($"{user.Mail} Logged In");
+                    _navigationService.NavigateTo<StoreViewModel>(user);
                 }
                 catch (Exception ex)
                 {

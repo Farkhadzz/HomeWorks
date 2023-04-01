@@ -14,7 +14,9 @@ namespace StoreApp.Services.Classes
         {
             try
             {
-                return JsonSerializer.Deserialize<T>(json);
+                if(json.Length > 10)
+                    return JsonSerializer.Deserialize<T>(json);
+                return null;
             }
             catch (Exception)
             {
