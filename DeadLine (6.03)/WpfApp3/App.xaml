@@ -1,0 +1,29 @@
+﻿<Application x:Class="WpfApp3.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WpfApp3"
+             xmlns:View="clr-namespace:WpfApp3.View"
+             xmlns:ViewModel="clr-namespace:WpfApp3.ViewModel"
+             StartupUri="/View/MainWindowView.xaml">
+    <Application.Resources>
+
+        <DataTemplate DataType="{x:Type ViewModel:FirstViewModel}">
+            <View:FirstView></View:FirstView>
+        </DataTemplate>
+       
+
+        <DataTemplate DataType="{x:Type ViewModel:SecondViewModel}">
+            <View:SecondView></View:SecondView>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type ViewModel:ThirdViewModel}">
+            <View:ThirdView></View:ThirdView>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type ViewModel:MainViewModel}">
+            <View:MainWindowView></View:MainWindowView>
+        </DataTemplate>
+
+
+    </Application.Resources>
+</Application>
