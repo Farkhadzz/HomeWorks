@@ -1,0 +1,47 @@
+﻿<Window x:Class="Car_Wiki.AddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:model="clr-namespace:Car_Wiki.Model.Classes"
+        xmlns:local="clr-namespace:Car_Wiki"
+        mc:Ignorable="d"
+        Title="Add Car" Height="450" Width="800">
+    
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Add Menu" FontSize="64" FontWeight="Black" FontFamily="Brush Script MT" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <ListView Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Model :" DisplayMemberBinding="{Binding Model}"/>
+                    <GridViewColumn Header="Brand :" DisplayMemberBinding="{Binding Brand}"/>
+                    <GridViewColumn Header="Year :" DisplayMemberBinding="{Binding Year}"/>
+                    <GridViewColumn Header="Motor :" DisplayMemberBinding="{Binding Motor}"/>
+                    <GridViewColumn Header="HP :" DisplayMemberBinding="{Binding Hp}"/>
+                    <GridViewColumn Header="Info :" DisplayMemberBinding="{Binding Info}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <TextBox x:Name="txtModel" md:HintAssist.Hint="MODEL :" Width="100" Height="30" VerticalAlignment="Top" Margin="5"/>
+            <TextBox x:Name="txtBrand" md:HintAssist.Hint="BRAND :" Width="100" Height="30" VerticalAlignment="Top" Margin="5"/>
+            <TextBox x:Name="txtYear" md:HintAssist.Hint="YEAR :" Width="100" Height="30" VerticalAlignment="Top" Margin="5"/>
+            <TextBox x:Name="txtMotor" md:HintAssist.Hint="MOTOR :" Width="100" Height="30" VerticalAlignment="Top" Margin="5"/>
+            <TextBox x:Name="txtHp" md:HintAssist.Hint="HORSE POWER :" Width="100" Height="30" VerticalAlignment="Top" Margin="5"/>
+            <TextBox x:Name="txtInfo" md:HintAssist.Hint="INFO:" Width="100" Height="30" VerticalAlignment="Top" Margin="5"/>
+        </StackPanel>
+
+        <Button x:Name="AddBtn" Click="AddBtn_Click" Grid.Row="2" Content="Add To The DataBase" Height="40" Width="300" Style="{DynamicResource MaterialDesignFlatButton}"/>
+
+    </Grid>
+</Window>
