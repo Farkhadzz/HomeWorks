@@ -1,0 +1,16 @@
+.fruits-list {
+    list-style-type: none;
+    background-color: #FFB6C1;
+    padding: 10px;
+    margin: 0;
+}
+
+.fruits-list-item {
+    background-color: #C71585;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+.texts {
+    color: white;
+}

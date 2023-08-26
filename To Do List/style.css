@@ -1,0 +1,14 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.task {
+    padding: 20px;
+    margin: 10px;
+    background-color: gainsboro; /* По умолчанию задача не выполнена */
+    list-style: none;
+}
+
+.checked{
+    background-color: lightblue; /* Задача выполнена */
+}
