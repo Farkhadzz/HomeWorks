@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Righteous&family=Urbanist:wght@500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: #FFFFFF;
+    font: 500 16px/28px 'Urbanist', Arial, sans-serif;
+    background-color: #14110E;
+}
+
+a {
+    color : inherit;
+    text-decoration: none;
+    transition: .4s;
+}
+
+ul li, ol li {
+    list-style-type: none;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+button {
+    display: block;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    font: inherit;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 1340px;
+    padding: 0 75px;
+    margin: 0 auto;
+}
+
+.container-header {
+    padding: 0 10px;
+}
+
+/* Header */
+
+#header-section {
+    padding: 32px 0;
+    background-color: #1c1814;
+}
+
+.header, .nav-main, .nav-main-list, .header-action{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-main {
+    flex-grow: 1;
+}
+
+.nav-main-list {
+    font: 400 18px 'Inter', Arial, sans-serif;
+    gap: 48px;
+}
+
+.nav-main-link-selected {
+    color: #C99E71;
+    cursor: default;
+    font-weight: 700;
+}
+
+.nav-main-link:hover {
+    color: #C99E71;
+}
+
+.header-action{
+    gap: 30px;
+    margin-left: 48px;
+}
+
+.header-action-search:hover, .header-action-cart:hover {
+    color: #C99E71;
+    font-size: 30px;
+}
+
+/* Banner */
+
+#banner-section {
+    background: url(/img/banner.jpg) 50% 0%/cover no-repeat;
+}
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+    padding: 147px 0px 158px;
+}
+
+.banner-info {
+    max-width: 530px;
+}
+
+.banner-header {
+    font: 72px/94px 'Righteous', cursive;
+}
+
+.banner-text {
+    margin: 32px 0px 64px;
+    font-size: 20px;
+    line-height: 36px;
+    opacity: 0.8;
+    text-transform: capitalize;
+}
+
+.btn-primary {
+    font: 700 18px 'Inter', Arial, sans-serif;
+    background-color: #C99E71;
+    padding: 20px 36px;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background-color: #8d7050;
+}
+
+.banner-video-btn{
+    display: flex;
+    align-items: flex-end;
+    align-self: flex-end;
+    font-size: 64px;
+    color: #C99E71;
+}
+
+.banner-video-btn:hover {
+    color: #8d7050;
+}
+
+.banner-list {
+    align-items: flex-end;
+    align-self: flex-end;
+}
