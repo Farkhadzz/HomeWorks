@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
+body {
+  font: 400 16px/28px "Montserrat", sans-serif;
+  color: #ffffff;
+  background-color: #52616B;
+}
+body a {
+  color: inherit;
+  text-decoration: none;
+}
+body ul li, body ol li {
+  list-style-type: none;
+}
+body img {
+  max-width: 100%;
+  max-height: 100%;
+}
+body button {
+  display: block;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.header {
+  background: url(/ASSETS/BmwHeader.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: auto;
+  height: 100vh;
+}
+
+.nav-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.nav-main .nav-main-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding-top: 20px;
+}
+.nav-main .nav-main-list .nav-main-link {
+  text-transform: capitalize;
+  font-family: "Montserrat";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.header-main-text {
+  height: 30px;
+  width: 400px;
+}
+
+.container {
+  margin: 220px 200px;
+}
+
+.car-info {
+  width: 400px;
+}
+
+.main-text {
+  font-size: 64px;
+}
+
+.second-text {
+  font-size: 24px;
+}/*# sourceMappingURL=style.css.map */
