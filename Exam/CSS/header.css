@@ -1,0 +1,155 @@
+@import url(/CSS/variables.css);
+
+header {
+    background-color: var(--header-background-color);
+    padding-left: 370px;
+    padding-right: 370px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    position: fixed;
+}
+
+.main-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.logo {
+    line-height: 50px;
+    font-size: 20px;
+    color: var(--gray);
+    padding-right: 15px;
+}
+
+.logo:hover {
+    color: white;
+}
+
+.nav-links {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+}
+
+.now-page {
+    background-color: black;
+    color: white !important;
+}
+
+.nav-links a {
+    color: var(--gray);
+    font-size: 14px;
+    padding: 15px;
+}
+
+.nav-links-item:hover {
+    color: white;
+}
+
+.services-burger-menu {
+    background-color: white;
+    width: 165px;
+    height: 87px;
+    flex-direction: column;
+    display: none;
+    margin-top: 17px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
+}
+
+.services-burger-menu a {
+    line-height: 25px;
+    margin: 5px;
+    color: black;
+}
+
+.services-burger-menu li:first-of-type {
+    margin-top: 5px;
+}
+
+.services-burger-menu li:hover {
+    background-color: #eeeeee;
+}
+
+.services:hover +
+.services-burger-menu,
+.services-burger-menu:hover {
+    display: flex;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 8px aqua;
+}
+
+.search-params input{
+    background-color: white;
+    height: 33px;
+    width: 12rem;
+    padding: 4px 8px 4px 8px;
+    font-size: 0.9rem;  
+    font-weight: lighter;
+    border: none;
+    border-radius: 3px;
+    transition: 0.3s;
+    margin-right: 4px;
+}
+
+.search-params button {
+    background-color: white;
+    font-size: 14px;
+    width: 70px;
+    height: 38px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+@media screen and (max-width: 1100px) {
+    header {
+        padding-left: 10vw;
+        padding-right: 10vw;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    header {
+        padding-left: 8vw;
+        padding-right: 8vw;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    header {
+        padding-left: 6vw;
+        padding-right: 6vw;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    header {
+        padding-left: 3vw;
+        padding-right: 3vw;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    header {
+        padding-left: 1.5vw;
+        padding-right: 1.5vw;
+    }
+    
+    nav, 
+    input, 
+    button {
+        display: none;
+    }
+    
+    #menu-icon {
+        display: flex;
+    }    
+}
