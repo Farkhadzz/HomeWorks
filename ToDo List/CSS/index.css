@@ -1,0 +1,9 @@
+@import url(/CSS/reset.css);
+@import url(/CSS/variables.css);
+@import url(/CSS/header.css);
+@import url(/CSS/main.css);
+
+body {
+	color: #FFF;
+	background-color: var(--dark)   ;
+}
