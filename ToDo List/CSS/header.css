@@ -7,9 +7,9 @@ header {
 
 header h1 {
     font-size: 2.5rem;
-    font-weight: 300;
+    font-weight: 600;
     margin-bottom: 1rem;
-    color: var(--gray);
+    color: var(--palm);
 }
 
 input, button {
@@ -21,25 +21,24 @@ input, button {
 
 #new-task-input {
     flex: 1 1 0%;
-    background-color: var(--darker);
+    background-color: var(--butter);
     padding: 1rem;
     border-radius: 1rem;
     margin-right: 1rem;
-    color: var(--light);
+    color: var(--palm);
     font-size: 1.25rem;
 }
 
 #new-task-input::placeholder {
-    color: var(--gray);
+    color: var(--palm);
 }
 
 
 #new-task-submit {
-    color: var(--pink);
+    color: var(--natural);
     font-size: 1.25rem;
     font-weight: 700;
-    background-image: linear-gradient(to right, var(--pink),
-    var(--purple));
+    background-color: var(--cocount);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     cursor: pointer;
@@ -56,11 +55,10 @@ input, button {
 
 .priority {
     margin-right: 10px;
-    color: var(--pink);
+    color: var(--natural);
     font-size: 1.25rem;
     font-weight: 700;
-    background-image: linear-gradient(to right, var(--pink),
-    var(--purple));
+    background-color: var(--cocount);
     -webkit-background-clip: text;
     appearance: none;
     -webkit-appearance: none;
@@ -81,31 +79,17 @@ input, button {
     width: 30rem;
 }
 
-.form-desc {
-    margin-top: 10px;
-    background-color: var(--darker);
-    padding: 1rem;
-    border-radius: 1rem;
-    margin-right: 1rem;
-    color: var(--light);
-    font-size: 1.25rem;
-}
-
-.form-desc::placeholder {
-    color: var(--gray);
-}
-
 #new-task-desc {
     margin-top: 10px;
     width: 50rem;
-    background-color: var(--darker);
+    background-color: var(--butter);
     padding: 1rem;
     border-radius: 1rem;
     margin-right: 1rem;
-    color: var(--light);
+    color: var(--palm);
     font-size: 1.25rem;
 }
 
 #new-task-desc::placeholder {
-    color: var(--gray);
+    color: var(--palm);
 }

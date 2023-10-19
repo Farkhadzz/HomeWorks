@@ -21,26 +21,6 @@ class TaskList {
   addTask(task) {
       this.tasks.push(task);
   }
-
-  // removeTask(id) {
-  //     this.tasks = this.tasks.filter(task => task.id !== id);
-  // }
-
-  // getTaskById(id) {
-  //     return this.tasks.find(task => task.id === id);
-  // }
-
-  // getAllTasks() {
-  //     return this.tasks;
-  // }
-
-  // getCompletedTasks() {
-  //     return this.tasks.filter(task => task.isCompleted);
-  // }
-
-  // getNotCompletedTasks() {
-  //     return this.tasks.filter(task => !task.isCompleted);
-  // }
 }
 
 const taskList = new TaskList();
@@ -74,8 +54,6 @@ newTaskSubmit.addEventListener('click', function (e) {
   }
 });
 
-// Функция для отображения задачи
-// Функция для отображения задачи
 function displayTask(task) {
   const taskDiv = document.createElement('div');
   taskDiv.classList.add('task');
@@ -88,7 +66,7 @@ function displayTask(task) {
   inputText.classList.add('text');
   inputText.value = task.title;
   inputText.readOnly = true;
-  inputText.setAttribute('data-priority', task.priority); // Добавляем data-priority атрибут
+  inputText.setAttribute('data-priority', task.priority);
 
   const actionsDiv = document.createElement('div');
   actionsDiv.classList.add('actions');
@@ -101,22 +79,55 @@ function displayTask(task) {
   editButton.classList.add('edit');
   editButton.textContent = 'Edit';
 
+  const applyButton = document.createElement('button');
+  applyButton.classList.add('apply');
+  applyButton.textContent = 'Apply';
+  applyButton.style.display = 'none';
+
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('delete');
   deleteButton.textContent = 'Delete';
 
+  deleteButton.addEventListener('click', function () {
+    deleteTask(task);
+    taskDiv.remove();
+});
+
+  // Обработчик события для кнопки Edit
+  editButton.addEventListener('click', function () {
+      inputText.readOnly = false;
+      editButton.style.display = 'none';
+      applyButton.style.display = 'block';
+  });
+
+  // Обработчик события для кнопки Apply
+  applyButton.addEventListener('click', function () {
+      inputText.readOnly = true;
+      editButton.style.display = 'block';
+      applyButton.style.display = 'none';
+
+      task.title = inputText.value;
+  });
+
   contentDiv.appendChild(inputText);
   actionsDiv.appendChild(viewButton);
   actionsDiv.appendChild(editButton);
+  actionsDiv.appendChild(applyButton);
   actionsDiv.appendChild(deleteButton);
 
   taskDiv.appendChild(contentDiv);
   taskDiv.appendChild(actionsDiv);
 
-  // Найди контейнер с id "tasks" и добавь туда созданный div "task"
   taskListDiv.appendChild(taskDiv);
 }
 
+
+function deleteTask(task) {
+  const taskIndex = taskList.tasks.indexOf(task);
+  if (taskIndex !== -1) {
+      taskList.tasks.splice(taskIndex, 1);
+  }
+}
 
 function sortTasksByPriority() {
   const taskContainer = document.getElementById('tasks');
@@ -135,7 +146,6 @@ function sortTasksByPriority() {
       return 0;
   });
 
-  // Очищаем контейнер задач и добавляем их в отсортированном порядке
   taskContainer.innerHTML = '';
   taskList.forEach(task => taskContainer.appendChild(task));
 }
