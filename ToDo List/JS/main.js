@@ -1,60 +1,83 @@
+// Класс для задачи
 class Task {
-  constructor(title, description, createdDate, isCompleted, priority) {
-      this.id = this.generateUniqueId();
-      this.title = title;
-      this.description = description;
-      this.createdDate = createdDate;
-      this.isCompleted = isCompleted;
-      this.priority = priority;
-  }
-
-  generateUniqueId() {
-      return Date.now().toString();
+  constructor(title, description, date, isCompleted, priority) {
+    this.title = title;
+    this.description = description;
+    this.date = date;
+    this.isCompleted = isCompleted;
+    this.priority = priority;
   }
 }
 
+// Класс для списка задач
 class TaskList {
   constructor() {
-      this.tasks = [];
+    this.tasks = [];
   }
 
   addTask(task) {
-      this.tasks.push(task);
+    this.tasks.push(task);
+  }
+
+  removeTask(task) {
+    const index = this.tasks.indexOf(task);
+    if (index !== -1) {
+      this.tasks.splice(index, 1);
+    }
   }
 }
 
+// Создаем экземпляр TaskList
 const taskList = new TaskList();
 
-const newTaskForm = document.getElementById('new-task-form');
-const newTaskSubmit = document.getElementById('new-task-submit');
-const taskListDiv = document.getElementById('tasks');
+// Обработчик события для кнопки "Add Task" (открытие модального окна)
+const addTaskButton = document.getElementById('addTaskButton');
+addTaskButton.addEventListener('click', function () {
+  const taskModal = document.getElementById('taskModal');
+  taskModal.style.display = 'block'; // Открываем модальное окно
+});
 
-newTaskSubmit.addEventListener('click', function (e) {
-  e.preventDefault();
+// Обработчик события для кнопки "Cancel" (закрытие модального окна)
+const closeModalButton = document.getElementById('closeModalButton');
+closeModalButton.addEventListener('click', function () {
+  const taskModal = document.getElementById('taskModal');
+  taskModal.style.display = 'none'; // Закрываем модальное окно
+});
 
-  const newTaskTitle = document.getElementById('new-task-input').value;
-  const newTaskDescription = document.getElementById('new-task-desc').value;
-  const newTaskPrioritySelect = document.getElementById('new-task-priority');
-  const newTaskPriority = newTaskPrioritySelect.value;
+// Обработчик события для кнопки "Add Task" в модальном окне
+const addTaskModalButton = document.getElementById('addTaskModalButton');
+addTaskModalButton.addEventListener('click', function () {
+  const titleInput = document.getElementById('modal-task-title');
+  const descriptionInput = document.getElementById('modal-task-description');
+  const priorityInput = document.getElementById('modal-task-priority');
 
-  if (newTaskTitle && newTaskDescription) {
-      const currentDate = new Date();
-      const formattedDate = currentDate.toLocaleString();
-      const newTask = new Task(newTaskTitle, newTaskDescription, formattedDate, false, newTaskPriority);
+  const title = titleInput.value;
+  const description = descriptionInput.value;
+  const priority = priorityInput.value;
 
-      taskList.addTask(newTask);
+  if (title && description) {
+    // Создайте новую задачу
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleString();
+    const newTask = new Task(title, description, formattedDate, false, priority);
 
-      document.getElementById('new-task-input').value = '';
-      document.getElementById('new-task-desc').value = '';
+    // Добавьте задачу в массив и обновите интерфейс
+    taskList.addTask(newTask);
+    displayTask(newTask);
 
-      // Обновляем интерфейс для отображения новой задачи
-      displayTask(newTask);
-  } else {
-      alert('Пожалуйста, заполните все поля формы.');
+    // Закройте модальное окно
+    const taskModal = document.getElementById('taskModal');
+    taskModal.style.display = 'none';
+
+    // Сбросьте значения полей в модальном окне
+    titleInput.value = '';
+    descriptionInput.value = '';
   }
 });
 
 function displayTask(task) {
+  const taskListDiv = document.getElementById('tasks');
+
   const taskDiv = document.createElement('div');
   taskDiv.classList.add('task');
 
@@ -88,27 +111,6 @@ function displayTask(task) {
   deleteButton.classList.add('delete');
   deleteButton.textContent = 'Delete';
 
-  deleteButton.addEventListener('click', function () {
-    deleteTask(task);
-    taskDiv.remove();
-});
-
-  // Обработчик события для кнопки Edit
-  editButton.addEventListener('click', function () {
-      inputText.readOnly = false;
-      editButton.style.display = 'none';
-      applyButton.style.display = 'block';
-  });
-
-  // Обработчик события для кнопки Apply
-  applyButton.addEventListener('click', function () {
-      inputText.readOnly = true;
-      editButton.style.display = 'block';
-      applyButton.style.display = 'none';
-
-      task.title = inputText.value;
-  });
-
   contentDiv.appendChild(inputText);
   actionsDiv.appendChild(viewButton);
   actionsDiv.appendChild(editButton);
@@ -119,33 +121,30 @@ function displayTask(task) {
   taskDiv.appendChild(actionsDiv);
 
   taskListDiv.appendChild(taskDiv);
-}
 
-
-function deleteTask(task) {
-  const taskIndex = taskList.tasks.indexOf(task);
-  if (taskIndex !== -1) {
-      taskList.tasks.splice(taskIndex, 1);
-  }
-}
-
-function sortTasksByPriority() {
-  const taskContainer = document.getElementById('tasks');
-  const taskList = Array.from(taskContainer.getElementsByClassName('task'));
-
-  taskList.sort((a, b) => {
-      const priorityA = a.querySelector('.text').getAttribute('data-priority');
-      const priorityB = b.querySelector('.text').getAttribute('data-priority');
-
-      if (priorityA < priorityB) {
-          return -1;
-      }
-      if (priorityA > priorityB) {
-          return 1;
-      }
-      return 0;
+  // Обработчик события для кнопки "Edit"
+  editButton.addEventListener('click', function () {
+    inputText.readOnly = false; // Разрешаем редактирование текста
+    editButton.style.display = 'none'; // Скрываем кнопку Edit
+    applyButton.style.display = 'block'; // Показываем кнопку Apply
   });
 
-  taskContainer.innerHTML = '';
-  taskList.forEach(task => taskContainer.appendChild(task));
+  // Обработчик события для кнопки "Apply"
+  applyButton.addEventListener('click', function () {
+    const updatedTitle = inputText.value;
+    // Обновите задачу в массиве
+    task.title = updatedTitle;
+    inputText.readOnly = true; // Запрещаем редактирование текста
+    applyButton.style.display = 'none'; // Скрываем кнопку Apply
+    editButton.style.display = 'block'; // Показываем кнопку Edit
+  });
+
+  // Обработчик события для кнопки "Delete"
+  deleteButton.addEventListener('click', function () {
+    // Удаляем задачу из массива
+    taskList.removeTask(task);
+
+    // Удаляем HTML элемент задачи
+    taskListDiv.removeChild(taskDiv);
+  });
 }

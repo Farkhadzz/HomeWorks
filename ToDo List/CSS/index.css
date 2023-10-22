@@ -2,6 +2,8 @@
 @import url(/CSS/variables.css);
 @import url(/CSS/header.css);
 @import url(/CSS/main.css);
+@import url(/CSS/modal.css);
+@import url(/CSS/view.css);
 
 body {
 	color: #FFF;

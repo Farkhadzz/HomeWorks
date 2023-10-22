@@ -14,60 +14,31 @@
 <body>
 
     <header>
+        <h1>Add Task:</h1>
+        <button id="addTaskButton">Add Task</button>
+    </header>
 
-        <h1>Add Task :</h1>
-
-        <form id="new-task-form">
-
-            <div class="form-input">
-                <input type="text" name="new-task-input" id="new-task-input" placeholder="What Do You Have Planned?" />
-
-                <select class="priority" id="new-task-priority">
+    <main>
+        <!-- Модальное окно для добавления задачи -->
+        <div id="taskModal" class="modal">
+            <div class="modal-content">
+                <h2>Add Task</h2>
+                <input type="text" id="modal-task-title" placeholder="Task Title">
+                <input type="text" id="modal-task-description" placeholder="Task Description">
+                <select id="modal-task-priority">
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
                     <option value="high">High</option>
                 </select>
-    
-                <input type="submit" id="new-task-submit" value="Add task" />
+                <button id="addTaskModalButton">Add Task</button>
+                <button id="closeModalButton">Cancel</button>
             </div>
-            
-            <input type="text" name="new-task-desc" id="new-task-desc" placeholder="Enter Description For Task"/>
-
-        </form>
-
-    </header>
-
-
-    <main>
+        </div>
 
         <section class="task-list">
-
-            <h2>Tasks :</h2>
-
-            <div id="tasks">
-
-                <select class="task-sorting" id="task-sorting">
-                    <option value="All">All</option>
-                    <option value="LowPriority">Low Priority</option>
-                    <option value="MediumPriority">Medium Priority</option>
-                    <option value="HighPriority">High Priority</option>
-                </select>
-
-                <!-- <div class="task">
-                    <div class="content">
-                        <input type="text" class="text" value="A new task" readonly>
-                    </div>
-
-                    <div class="actions">
-                        <button class="view">View</button>
-                        <button class="edit">Edit</button>
-                        <button class="delete">Delete</button>
-                    </div>
-                </div> -->
-            </div>
-
+            <h2>Tasks:</h2>
+            <div id="tasks"></div>
         </section>
-
     </main>
 
 </body>
