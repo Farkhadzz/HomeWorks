@@ -5,23 +5,6 @@ main {
 	margin: 0 auto;
 }
 
-.task-sorting {
-	margin-bottom: 1rem;
-    color: var(--natural);
-    font-size: 1.25rem;
-    font-weight: 700;
-	background-color: var(--cocount);
-    -webkit-background-clip: text;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -webkit-text-fill-color: transparent;
-    cursor: pointer;
-    transition: 0.4s;
-    border: none;
-    outline: none;
-}
-
 .task-list {
 	padding: 1rem;
 }
@@ -88,4 +71,21 @@ main {
 
 .delete {
 	color: crimson;
+}
+
+#sortSelect, #filterSelect {
+	margin-left: 1.5rem;
+    color: var(--natural);
+    font-size: 1.25rem;
+    font-weight: 700;
+	background-color: var(--cocount);
+    -webkit-background-clip: text;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    transition: 0.4s;
+    border: none;
+    outline: none;
 }

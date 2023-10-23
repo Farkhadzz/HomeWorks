@@ -19,7 +19,6 @@
     </header>
 
     <main>
-        <!-- Модальное окно для добавления задачи -->
         <div id="taskModal" class="modal">
             <div class="modal-content">
                 <h2>Add Task</h2>
@@ -39,6 +38,15 @@
             <h2>Tasks:</h2>
             <div id="tasks"></div>
         </section>
+        <select id="sortSelect">
+            <option value="title">Sort By Title</option>
+            <option value="date">Sort By Date</option>
+          </select>
+          <select id="filterSelect">
+            <option value="all">All</option>
+            <option value="completed">Completed Tasks</option>
+            <option value="uncompleted">Not Completed Tasks</option>
+          </select>
     </main>
 
 </body>

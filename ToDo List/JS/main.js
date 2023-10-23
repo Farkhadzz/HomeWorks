@@ -1,4 +1,3 @@
-// Класс для задачи
 class Task {
   constructor(title, description, date, isCompleted, priority) {
     this.title = title;
@@ -9,7 +8,6 @@ class Task {
   }
 }
 
-// Класс для списка задач
 class TaskList {
   constructor() {
     this.tasks = [];
@@ -27,24 +25,27 @@ class TaskList {
   }
 }
 
-// Создаем экземпляр TaskList
 const taskList = new TaskList();
 
-// Обработчик события для кнопки "Add Task" (открытие модального окна)
+function saveTasksToLocalStorage() {
+  localStorage.setItem('tasks', JSON.stringify(taskList.tasks));
+}
+
+// Обработчик Modal "AddTask"
 const addTaskButton = document.getElementById('addTaskButton');
 addTaskButton.addEventListener('click', function () {
   const taskModal = document.getElementById('taskModal');
-  taskModal.style.display = 'block'; // Открываем модальное окно
+  taskModal.style.display = 'block';
 });
 
-// Обработчик события для кнопки "Cancel" (закрытие модального окна)
+// Обработчик Cancel
 const closeModalButton = document.getElementById('closeModalButton');
 closeModalButton.addEventListener('click', function () {
   const taskModal = document.getElementById('taskModal');
-  taskModal.style.display = 'none'; // Закрываем модальное окно
+  taskModal.style.display = 'none';
 });
 
-// Обработчик события для кнопки "Add Task" в модальном окне
+// Обработчик AddTask
 const addTaskModalButton = document.getElementById('addTaskModalButton');
 addTaskModalButton.addEventListener('click', function () {
   const titleInput = document.getElementById('modal-task-title');
@@ -56,25 +57,24 @@ addTaskModalButton.addEventListener('click', function () {
   const priority = priorityInput.value;
 
   if (title && description) {
-    // Создайте новую задачу
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleString();
     const newTask = new Task(title, description, formattedDate, false, priority);
 
-    // Добавьте задачу в массив и обновите интерфейс
     taskList.addTask(newTask);
     displayTask(newTask);
 
-    // Закройте модальное окно
     const taskModal = document.getElementById('taskModal');
     taskModal.style.display = 'none';
 
-    // Сбросьте значения полей в модальном окне
+    saveTasksToLocalStorage();
+
     titleInput.value = '';
     descriptionInput.value = '';
   }
 });
 
+// Функция для отображения задач
 function displayTask(task) {
   const taskListDiv = document.getElementById('tasks');
 
@@ -98,6 +98,10 @@ function displayTask(task) {
   viewButton.classList.add('view');
   viewButton.textContent = 'View';
 
+  const doneButton = document.createElement('button');
+  doneButton.classList.add('done');
+  doneButton.textContent = 'Done';
+
   const editButton = document.createElement('button');
   editButton.classList.add('edit');
   editButton.textContent = 'Edit';
@@ -113,6 +117,7 @@ function displayTask(task) {
 
   contentDiv.appendChild(inputText);
   actionsDiv.appendChild(viewButton);
+  actionsDiv.appendChild(doneButton);
   actionsDiv.appendChild(editButton);
   actionsDiv.appendChild(applyButton);
   actionsDiv.appendChild(deleteButton);
@@ -122,29 +127,87 @@ function displayTask(task) {
 
   taskListDiv.appendChild(taskDiv);
 
-  // Обработчик события для кнопки "Edit"
+  // Обработчик Edit
   editButton.addEventListener('click', function () {
-    inputText.readOnly = false; // Разрешаем редактирование текста
-    editButton.style.display = 'none'; // Скрываем кнопку Edit
-    applyButton.style.display = 'block'; // Показываем кнопку Apply
+    inputText.readOnly = false;
+    editButton.style.display = 'none';
+    applyButton.style.display = 'block';
   });
 
-  // Обработчик события для кнопки "Apply"
+  // Обработчик Apply
   applyButton.addEventListener('click', function () {
     const updatedTitle = inputText.value;
-    // Обновите задачу в массиве
     task.title = updatedTitle;
-    inputText.readOnly = true; // Запрещаем редактирование текста
-    applyButton.style.display = 'none'; // Скрываем кнопку Apply
-    editButton.style.display = 'block'; // Показываем кнопку Edit
+    inputText.readOnly = true;
+    applyButton.style.display = 'none';
+    editButton.style.display = 'block';
+
+    saveTasksToLocalStorage();
   });
 
-  // Обработчик события для кнопки "Delete"
-  deleteButton.addEventListener('click', function () {
-    // Удаляем задачу из массива
-    taskList.removeTask(task);
-
-    // Удаляем HTML элемент задачи
+  // Обработчик Done
+  doneButton.addEventListener('click', function () {
+    task.isCompleted = true;
     taskListDiv.removeChild(taskDiv);
+    saveTasksToLocalStorage();
+  });
+
+  // Обработчик Delete
+  deleteButton.addEventListener('click', function () {
+    taskList.removeTask(task);
+    taskListDiv.removeChild(taskDiv);
+    saveTasksToLocalStorage();
+  });
+
+  viewButton.addEventListener('click', function () {
+    const taskTitle = task.title;
+    const taskDescription = task.description;
+    const taskPriority = task.priority;
+    const taskDate = task.date;
+
+    const viewUrl = `view.html?title=${encodeURIComponent(taskTitle)}&description=${encodeURIComponent(taskDescription)}&priority=${encodeURIComponent(taskPriority)}&date=${encodeURIComponent(taskDate)}`;
+
+    window.open(viewUrl, 'Task View', 'width=400,height=400');
   });
 }
+
+// Функция для обновления списка задач
+function updateTaskList(filterType) {
+  const taskListDiv = document.getElementById('tasks');
+  taskListDiv.innerHTML = '';
+
+  taskList.tasks.forEach(function (task) {
+    if (filterType === 'all' || (filterType === 'completed' && task.isCompleted) || (filterType === 'uncompleted' && !task.isCompleted)) {
+      displayTask(task);
+    }
+  });
+}
+
+// Обработчик для фильтрации задач
+const filterSelect = document.getElementById('filterSelect');
+filterSelect.addEventListener('change', function () {
+  const selectedFilter = filterSelect.value;
+  updateTaskList(selectedFilter);
+});
+
+// Восстанавливаю задачи из localStorage при загрузке страницы, чтобы задачи не удалились при обновке.
+window.addEventListener('load', function () {
+  const taskListDiv = document.getElementById('tasks');
+  const savedTasksJSON = localStorage.getItem('tasks');
+
+  if (savedTasksJSON) {
+    const savedTasks = JSON.parse(savedTasksJSON);
+    savedTasks.forEach(function (taskData) {
+      const task = new Task(
+        taskData.title,
+        taskData.description,
+        taskData.date,
+        taskData.isCompleted,
+        taskData.priority
+      );
+      taskList.addTask(task);
+    });
+  }
+
+  updateTaskList('all');
+});

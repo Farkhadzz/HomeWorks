@@ -1,18 +1,20 @@
-const task = getTaskParamsFromURL();
-
-// Функция для извлечения параметров задачи из URL
-function getTaskParamsFromURL() {
+document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
-    return {
-        title: urlParams.get('title'),
-        description: urlParams.get('description'),
-        date: urlParams.get('date'),
-        priority: urlParams.get('priority'),
-    };
-}
-
-// Отображаем информацию о задаче на странице
-document.getElementById('taskTitle').textContent = task.title;
-document.getElementById('taskDescription').textContent = task.description;
-document.getElementById('taskDate').textContent = task.date;
-document.getElementById('taskPriority').textContent = task.priority;
+    const taskTitle = urlParams.get('title');
+    const taskDescription = urlParams.get('description');
+    const taskPriority = urlParams.get('priority');
+    const taskDate = urlParams.get('date');
+  
+    const titleElement = document.getElementById('task-title');
+    titleElement.textContent = taskTitle;
+  
+    const descriptionElement = document.getElementById('task-description');
+    descriptionElement.textContent = taskDescription;
+  
+    const priorityElement = document.getElementById('task-priority');
+    priorityElement.textContent = taskPriority;
+  
+    const dateElement = document.getElementById('task-date');
+    dateElement.textContent = taskDate;
+  });
+  
